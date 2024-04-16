@@ -1,0 +1,17 @@
+[Unit]
+Description=Rocket-APP
+
+[Service]
+User=rocketapp 
+Group=rocketapp
+
+ExecStart=/var/www/rocket-app/rocket-app
+WorkingDirectory=/var/www/rocket-app/
+Restart=always
+Environment="ROCKET_ENV=prod"
+Environment="ROCKET_ADDRESS=127.0.0.1"
+Environment="ROCKET_PORT=8000"
+Environment="ROCKET_DATABASES={sqlite = { url = "./database.sqlite" }}"
+
+[Install]
+WantedBy=multi-user.target
